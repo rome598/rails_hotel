@@ -1,0 +1,52 @@
+<%= form_with(model: room) do |form|%>
+    <%# Doesn't take the errors!, does't show them %>
+    <%# Check it out! %>
+    <% if room.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(room.errors.count, "error") %> Prohibited this room from being saved: </h2>
+
+            <ul>
+                <% room.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <%# Required attributes ON until errors resolved! %>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group my-4 mb-3">
+                <%= form.label :length, class:"form-label" %>
+                <%= form.text_field :length, class:"form-control", required: "required" %>
+            </div>
+
+            <div class="form-group mb-3">
+                <%= form.label :width, class:"form-label" %>
+                <%= form.text_field :width, class:"form-control", required: "required" %>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="btn btn-primary">
+                    Imagen <%= form.file_field :image, style: 'display:none' %>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <%= form.label :Description %>
+                <%= form.text_area :description, class:"form-control", rows: 13, required: "required" %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group mb-3 d-grid gap-2">
+                <%= form.submit "Save", class:"btn btn-primary"%>
+            </div>
+        </div>
+    </div>
+
+<% end %>

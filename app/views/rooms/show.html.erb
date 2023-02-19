@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <%= image_tag (@room.image).to_s, style: 'width:100%;' %>
+        </div>
+        <div class="col-md-5">
+            <p><%= @room.description %></p>
+            <p><strong>Length: </strong><%= @room.length %></p>
+            <p><strong>Width: </strong><%= @room.width %></p>
+            <a href="#" class="btn btn-primary my-3">Save!</a>
+        </div>
+    </div>
+    <div class="">
+        <%= link_to "Back", rooms_path, class:"btn btn-dark my-3" %>
+        <% if logged_in?(:site_admin) %>
+            <%= link_to "Edit", edit_room_path(@room), class:"btn btn-success" %>
+            <%= link_to "Destroy", @room, data: {
+                                turbo_method: :delete,
+                                turbo_confirm: "Are you sure?"
+                            }, class:"btn btn-danger" %>
+        <% end %>
+    </div>
+</div>
