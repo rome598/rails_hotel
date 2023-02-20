@@ -15,3 +15,5 @@ document.addEventListener("turbo:load", () => {
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 })
+
+

@@ -14,10 +14,7 @@
         <%= link_to "Back", rooms_path, class:"btn btn-dark my-3" %>
         <% if logged_in?(:site_admin) %>
             <%= link_to "Edit", edit_room_path(@room), class:"btn btn-success" %>
-            <%= link_to "Destroy", @room, data: {
-                                turbo_method: :delete,
-                                turbo_confirm: "Are you sure?"
-                            }, class:"btn btn-danger" %>
+            <%= button_to "Destroy", @room, :method => :delete, data: {turbo_confirm: "Are you sure?"}, class:"btn btn-danger" %>
         <% end %>
     </div>
 </div>
